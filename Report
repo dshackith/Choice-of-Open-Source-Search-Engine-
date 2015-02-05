@@ -1,128 +1,11 @@
-FINAL PROJECT REPORT
-ON
+ REPORT:
 A COMPARISON OF OPEN SOURCE SEARCH ENGINES ON A CLOUD BASED CMS
- 
-ACKNOWLEDGEMENT
 
-We take this opportunity to humbly thank our internal project guide Mr Tushar A. Rane and Head of the Department, Dr Emmanuel M. for their valuable guidance and for providing all the necessary facilities, which were indispensable in the completion of this project report. We are also thankful to all the staff members of the Department of Information Technology of Pune Institute of Computer Technology, Pune for their valuable time, support, comments, suggestions and persuasion. We would also like to thank the institute for providing the required facilities, internet access and important reference books.
-
-We would also like to thank our external guides Mr R Dharmadhikari, Mr V. Mandhre and Mr J. Chandaria of Icertis Solutions Pvt. Ltd. for their support and guidance in realising the goals of the project.
-Anil Bajaj
-Nutan Shinde
-Rahul Baijal
-Ruhi Agarwal
- 
 ABSTRACT
 Information Retrieval is an important aspect of enterprise-level applications. Finding the right answer to a query in optimum time has consequences on the efficiency of its user. For this purpose there exist many open-source search engines with varied features. This paper presents an extensive comparison on the usage of two open-source search engines on a cloud based Contract Management System. The system provides an interface which will be able to index documents, delete existing indexes and search documents through both structured and unstructured queries, using both, the contents of the documents as well as their metadata. The two implementations shall be justified on their performance by benchmarking them on advanced search features over documents numbering from thousands to millions. A comprehensive report shall be presented quantifying use of either technology in different execution scenarios which can be useful in further enterprise level developments.
 Keywords: Apache Solr, Sphinx, Indexing, Querying, CMS, open-source search, Azure
 
 
- 
-TABLE OF CONTENTS
-
-1.	Introduction								      	     9
-1.1 Need…………………………………………………………………..…....9
-1.2	Basic Concepts…………………………………………………………......9
-1.3	Application…………………………………………………………...…...10
-
-2.	Literature Survey								   11
-2.1 Apache Solr…………………………………………………………….....11
-2.2 Searching with Apache Solr……………………………………………....13
-2.3 Indexing data using Apache Solr………………………………………....14	
-2.4 Sphinx…………………………………………………………………….15
-
-3.	Project Statement								  18
-
-4.	System Requirements and Specifications					  19
-
-5.	Design     								              20
-5.1 Data Flow Diagram………………………………………………………20
-5.2 Use Case Diagram………………………………………………………..20
-5.3 Use Case Diagram for Searching………………………………………...21 
-5.4 Use Case Diagram for Indexing………………………………………….21
-5.5 Deployment Diagram…………………………………………………….22 
-
-6.	Planning and Scheduling							  23
-6.1 Purpose…………………………………………………………………...23
-6.2 Project Approach…………………………………………………………23
-6.3 Project Timeline………………………………………………………….24
-6.4 Project Roles and Responsibilities………………………………..……...24
-
-References	 								              25
-
-
-
- 
-LIST OF FIGURES
-FIGURE NUMBER	FIGURE NAME	PAGE NUMBER
-
-1.1	System Plan using Apache Solr
-	10
-2.1	Solr Operation Overview
-	12
-2.2	Overview of searching with Apache Solr
-	13
-5.1	Data Flow Diagram
-	18
-5.2	Use Case Diagram
-	18
-5.3	Use Case Diagram for searching	19
-5.4	Use Case Diagram for indexing	19
-5.5	Deployment Diagram	20
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-LIST OF TABLES
-TABLE NUMBER	TABLE NAME	PAGE NUMBER
-
-1.	Project roles and responsibilities	14
-
- 
-
-LIST OF SYMBOLS, ABBREVIATIONS AND NOMENCLATURE
-
-HTTP	Hyper Text Transfer Protocol
-
-JSON	JavaScript Object Notation
-
-XML	Extended Mark-up Language
-
-SQL	Structured Query Language
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
 CHAPTER 1
 INTRODUCTION
 
@@ -134,7 +17,6 @@ We need a cloud based system that will solve this problem. The proposed system s
 2.	Provide interface to search documents using structured and unstructured queries
 
 
- 
 CHAPTER 2
 LITERATURE SURVEY
 2.1	APACHE SOLR
@@ -163,32 +45,12 @@ Features include:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Fig 2.1: Solr Operation Overview [2]
 2.2	SEARCHING WITH APACHE SOLR
 When a user runs a search in Solr, the search query is processed by a request handler. A request handler is a Solr plug-in that defines the logic to be used when Solr processes a request. Solr supports a variety of request handlers. Some are designed for processing search queries, while others manage tasks such as index replication. To process a search query, a request handler calls a query parser, which interprets the terms and parameters of a query. Different query parsers support different syntax. Input to a query parser can include:
 •	search strings---that is, terms to search for in the index
 •	parameters for fine-tuning the query by increasing the importance of particular strings or fields, by applying Boolean logic among the search terms, or by excluding content from the search results
 •	parameters for controlling the presentation of the query response, such as specifying the order in which results are to be presented or limiting the response to particular fields of the search application's schema.
 
-Fig 2.2: Overview of searching with Apache Solr [3]
 
 Search parameters may also specify a query filter. As part of a search response, a query filter runs a query against the entire index and caches the results.
 Highlighting can make it easier to find relevant passages in long documents returned in a search. Solr supports multi-term highlighting. Solr includes a rich set of search parameters for controlling how terms are highlighted [4].
@@ -203,10 +65,6 @@ Schema.xml looks like:
 
 To index any (pdf, doc, xsl or mp3) file following command is used: 
 curl "http://localhost:8983/solr/update/extract?literal.id=1&commit=true" –F "myfile=@File_name.pdf
-
-
-
-
 
 2.4	SPHINX SEARCH ENGINE
 Sphinx is a full-text search engine, publicly distributed under GPL Technically, Sphinx is a standalone software package provides fast and relevant full-text search functionality to client applications. It was specially designed to integrate well with SQL databases storing the data, and to be easily accessed by scripting languages. However, Sphinx does not depend on nor require any specific database to function.
@@ -241,8 +99,6 @@ index rt
 }
 
 
-
- 
 CHAPTER 3
 CONCEPT AND SPECIFICATION
 There exist a large choice of open-source search engines available, but the question of which to use is a problem faced by many developers in need of a search engine on their applications. With each offering varied methods of implementation and in possession of different features, the decision to be made in a pragmatic approach. We propose to provide a solution to this problem by presenting a comprehensive report of the comparison of two popular search engines on a CMS.
@@ -250,8 +106,6 @@ The system shall be implemented using two base technologies separately, Apache S
 Apache Solr search can be used as a replacement for core content search and boasts both extra features and better performance. Requirements for features such as faceted search are becoming increasingly common. The inherent scalability and performance implications are well documented by the Faceted Search module’s maintainers. Apache Solr also supports indexing and searching multiple sites (imagine internal intranet site and external corporate site), indexing attachments (eg PDFs, Excel documents) and recommended content blocks driven by a node’s taxonomy.
 
 
- 
-Fig 1.1: System Plan using Apache Solr
 System shall be compared on the two implementations and benchmarking shall be done by varying: 
 1.	Number of documents from thousands to millions
 2.	Storage and search options
@@ -267,46 +121,9 @@ SOFTWARE SPECIFICATIONS
 5.	Windows Azure cloud account
 
 
-
-
-
-
-
-
-
-CHAPTER 4
-DESIGN AND SPECIFICATIONS
-
-4.1	DATA FLOW DIAGRAM
-
-
-Fig 4.1: Data Flow Diagram
-
-4.2	USE CASE DIAGRAMS
-Fig 4.2: Use Case Diagram
-Fig 4.3: Use Case Diagram for Searching
-
-
-Fig 4.4: Use Case Diagram for Indexing
-
-4.3	DEPLOYMENT DIAGRAM
-
-Fig 4.5: Deployment Diagram
- 
-CHAPTER 5
-PERFORMANCE EVALUATION AND TESTING
-
-
-
 In accordance with the aim of the project, we wish to draw up a well-defined process which quantifies the search engines on certain factors and provides users with an objective view of the quality of those engines. However, since each search engine has proven its vitality in its field, the question of ‘best search engine’ is very relative. The solution in this case is to compare the engines on the requirements of the user in different scenarios. The comparison can be made by analysing common characteristics like indexing time, search performance, index size etc. However, these are not the only features. Another possibility exists to consider factors such as usability, easy compatibility, and how easy is it to be customized and deployed.
 
-
 The initial testing of the API was done by drawing up Unit Tests on Visual Studio (VS) 2012 and measuring approximate time of execution and code coverage.  Further testing and benchmarking was done using in-built methods of the individual search engines to measure time and performance on different facets of searching and indexing.
-
-
-
-
-
 
 
 
@@ -326,16 +143,6 @@ Along with measuring performances of search engines in terms of indexing and sea
 Indexing was carried out by indexing documents ranging from 1kb to 172kb. These documents were actual contracts in which the mentioned fields could be identified. Such documents were replicated to produce sets of data with documents ranging from hundred to millions. It is to be noted that all comparisons were done on a single index without partitioning of indexes. Additionally, text analysis was set to minimal with default settings to pitch the two engines on equal terms.
 
 
-
-
-
-
-
-
-
-
-		
-Fig: Plain Indexing varying #docs
 With reference to the above Fig, Sphinx indexes comparatively less documents per second than Solr. SolrNet tries to fit all the documents in a single HTTP request, thus this reduced significant time for indexing. Note that, Sphinx goes out of memory when the number of documents go above 6, 00,000.
 
 While indexing, the memory usage will grow as the no. of documents increase, until a commit is performed. By default, the engines perform a commit after every document is indexed, which requires more processing, thus increasing indexing time. A commit will free up almost all heap memory. To avoid large memory build-up and associated garbage collection pauses during indexing, a manual commit is performed after a certain batch of docs are indexed. This is known as batch indexing. 
@@ -371,14 +178,6 @@ In search comparison it was observed that Solr retrieves the results much faster
 
 
 
-
-
-
-
-
-
-
-
 CHAPTER 7
 
 APPLICATIONS
@@ -395,12 +194,6 @@ We have implemented the search facility using two popular open-source search eng
 
 
 
-
-
-
-
-
-
 CHAPTER 8
 CONCLUSION AND FUTURE SCOPE
 
@@ -409,11 +202,6 @@ This study presents a comparison of two popular open source search engines imple
 After analysing all quantitative results it can concluded that on smaller applications where he indexing overhead should be minimum Sphinx is a better choice. However, in case of larger applications Solr remains a popular choice. 
 
 In conclusion, to answer the questions of best search engine, the above results should be complemented with the ease of deployment and usability of the search engines, along with specific requirements of the user. For example, if disk space is a constraint, Sphinx is a better option as it uses few space. Solr also has a powerful external configuration which allows it to be easily integrated with other applications. It also has much more in-built search features whereas developers have to explicitly add plug-ins or code in case of Sphinx. 
-
-
-
-
-
 
 
 REFERENCES
